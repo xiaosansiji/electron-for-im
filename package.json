@@ -1,12 +1,12 @@
 {
-  "name": "basic-electron-react-boilerplate",
-  "description": "A basic Electron-React boilerplate",
+  "name": "electron-im",
+  "description": "A simple Electron-React im for",
   "version": "0.1.0",
   "private": true,
-  "author": "Thomas T. (https://github.com/Spooky12/)",
-  "repository": "https://github.com/Spooky12/basic-electron-react-boilerplate",
+  "author": "xiaosansiji",
+  "repository": "https://github.com/xiaosansiji/electron-for-im",
   "main": "public/main.js",
-  "homepage": "./",
+  "homepage": "https://github.com/xiaosansiji/electron-for-im",
   "dependencies": {
     "@material-ui/core": "^3.1.0",
     "@material-ui/icons": "^3.0.1",

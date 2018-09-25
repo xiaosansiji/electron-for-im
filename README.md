@@ -1,20 +1,20 @@
-# basic-electron-react-boilerplate
+# electron-react-im
 
-A basic boilerplate for cross-platform desktop apps greatly inspired by [this article](https://medium.freecodecamp.org/heres-how-i-created-a-markdown-app-with-electron-and-react-1e902f8601ca). This boilerplate uses npm unlike the article that uses yarn.
+A simple for cross-platform desktop im. This project is built by [creat-react-app](https://github.com/facebook/create-react-app) & electron.
 
 ## Installation
 
 - Clone the repo via git:
 
 ```bash
-git clone --depth=1 https://github.com/Spooky12/basic-electron-react-boilerplate.git your-project-name
+git clone https://github.com/xiaosansiji/electron-for-im your-project-name
 ```
 
 - Install the dependencies:
 
 ```bash
 cd your-project-name
-npm install
+npm install / yarn
 ```
 
 ## Running the App
