@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import { observer, inject } from 'mobx-react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -44,7 +44,7 @@ const styles = theme => ({
 });
 
 function SignIn(props) {
-  const { classes } = props;
+  const { classes, signIn } = props;
 
   return (
     <React.Fragment>
@@ -54,14 +54,14 @@ function SignIn(props) {
           <Avatar className={classes.avatar}>
             <LockIcon />
           </Avatar>
-          <Typography variant="headline">Sign in</Typography>
-          <form className={classes.form}>
+          <Typography variant="headline">DniHaier</Typography>
+          <form className={classes.form} onSubmit={() => signIn}>
             <FormControl margin="normal" required fullWidth>
-              <InputLabel htmlFor="email">Email Address</InputLabel>
+              <InputLabel htmlFor="email">工号</InputLabel>
               <Input id="email" name="email" autoComplete="email" autoFocus />
             </FormControl>
             <FormControl margin="normal" required fullWidth>
-              <InputLabel htmlFor="password">Password</InputLabel>
+              <InputLabel htmlFor="password">密码</InputLabel>
               <Input
                 name="password"
                 type="password"
@@ -76,7 +76,7 @@ function SignIn(props) {
               color="primary"
               className={classes.submit}
             >
-              Sign in
+              登陆
             </Button>
           </form>
         </Paper>
@@ -85,8 +85,6 @@ function SignIn(props) {
   );
 }
 
-SignIn.propTypes = {
-  classes: PropTypes.object.isRequired,
-};
-
-export default withStyles(styles)(SignIn);
+export default inject(({ session }) => ({
+  signIn: session.signIn,
+}))(observer(withStyles(styles)(SignIn)));
