@@ -1,10 +1,9 @@
-import { observable, computed, action, decorate } from 'mobx';
+import { observable, computed, action } from 'mobx';
 
-class SessionStore {
-  isLogined = false;
-  userInfo = {};
+export default class SessionStore {
+  @observable userInfo;
 
-  get getLoginStatus() {
+  @computed get getLoginStatus() {
     if (this.userInfo && this.userInfo.name) {
       return true;
     }
@@ -15,16 +14,10 @@ class SessionStore {
     this.userInfo = userInfo;
   }
 
+  @action('Sign in')
   signIn() {
     debugger
     this.userInfo = { name: 'sunzhe' };
     console.log('xxx')
   }
 }
-
-export default decorate(SessionStore, {
-  isLogined: observable,
-  userInfo: observable,
-  getLoginStatus: computed,
-  signIn: action,
-})

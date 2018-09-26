@@ -42,49 +42,51 @@ const styles = theme => ({
     marginTop: theme.spacing.unit * 3,
   },
 });
-
-function SignIn(props) {
-  const { classes, signIn } = props;
-
-  return (
-    <React.Fragment>
-      <CssBaseline />
-      <main className={classes.layout}>
-        <Paper className={classes.paper}>
-          <Avatar className={classes.avatar}>
-            <LockIcon />
-          </Avatar>
-          <Typography variant="headline">DniHaier</Typography>
-          <form className={classes.form} onSubmit={() => signIn}>
-            <FormControl margin="normal" required fullWidth>
-              <InputLabel htmlFor="email">工号</InputLabel>
-              <Input id="email" name="email" autoComplete="email" autoFocus />
-            </FormControl>
-            <FormControl margin="normal" required fullWidth>
-              <InputLabel htmlFor="password">密码</InputLabel>
-              <Input
-                name="password"
-                type="password"
-                id="password"
-                autoComplete="current-password"
-              />
-            </FormControl>
-            <Button
-              type="submit"
-              fullWidth
-              variant="raised"
-              color="primary"
-              className={classes.submit}
-            >
-              登陆
-            </Button>
-          </form>
-        </Paper>
-      </main>
-    </React.Fragment>
-  );
+@inject(({ session }) => ({
+  signIn: session.signIn,
+}))
+@observer
+class SignIn extends React.Component {
+  render() {
+    const { classes, signIn } = this.props;
+    return (
+      <React.Fragment>
+        <CssBaseline />
+        <main className={classes.layout}>
+          <Paper className={classes.paper}>
+            <Avatar className={classes.avatar}>
+              <LockIcon />
+            </Avatar>
+            <Typography variant="headline">DniHaier</Typography>
+            <form className={classes.form} onSubmit={signIn}>
+              <FormControl margin="normal" required fullWidth>
+                <InputLabel htmlFor="email">工号</InputLabel>
+                <Input id="email" name="email" autoComplete="email" autoFocus />
+              </FormControl>
+              <FormControl margin="normal" required fullWidth>
+                <InputLabel htmlFor="password">密码</InputLabel>
+                <Input
+                  name="password"
+                  type="password"
+                  id="password"
+                  autoComplete="current-password"
+                />
+              </FormControl>
+              <Button
+                type="submit"
+                fullWidth
+                variant="raised"
+                color="primary"
+                className={classes.submit}
+              >
+                登陆
+              </Button>
+            </form>
+          </Paper>
+        </main>
+      </React.Fragment>
+    );
+  }
 }
 
-export default inject(({ session }) => ({
-  signIn: session.signIn,
-}))(observer(withStyles(styles)(SignIn)));
+export default withStyles(styles)(SignIn);
