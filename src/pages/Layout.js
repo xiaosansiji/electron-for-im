@@ -22,9 +22,8 @@ export default class Layout extends Component {
       signIn,
       signOut,
     } = this.props;
-    console.log(userInfo);
     if (!isLogined) {
-      return (<Login signIn={signIn} />);
+      return (<Login signIn={signIn} userInfo={userInfo} />);
     }
     return (
       <div>

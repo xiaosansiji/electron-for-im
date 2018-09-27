@@ -44,8 +44,22 @@ const styles = theme => ({
 });
 @observer
 class SignIn extends React.Component {
+  state = {
+    name: '',
+    password: '',
+  }
+  nameOnChange = (event) => {
+    this.setState({ name: event.target.value });
+  }
+  passwordOnChange = (event) => {
+    this.setState({ password: event.target.value });
+  }
+  handleSubmit = () => {
+    this.props.signIn(this.state);
+  }
   render() {
-    const { classes, signIn } = this.props;
+    const { name, password } = this.state;
+    const { classes } = this.props;
     return (
       <React.Fragment>
         <CssBaseline />
@@ -55,18 +69,18 @@ class SignIn extends React.Component {
               <LockIcon />
             </Avatar>
             <Typography variant="headline">DniHaier</Typography>
-            <form className={classes.form} onSubmit={signIn}>
+            <form className={classes.form} onSubmit={this.handleSubmit.bind(this)}>
               <FormControl margin="normal" required fullWidth>
-                <InputLabel htmlFor="email">工号</InputLabel>
-                <Input id="email" name="email" autoComplete="email" autoFocus />
+                <InputLabel htmlFor="name">工号</InputLabel>
+                <Input autoComplete="name" autoFocus value={name} onChange={this.nameOnChange.bind(this)} />
               </FormControl>
               <FormControl margin="normal" required fullWidth>
                 <InputLabel htmlFor="password">密码</InputLabel>
                 <Input
-                  name="password"
                   type="password"
-                  id="password"
                   autoComplete="current-password"
+                  value={password}
+                  onChange={this.passwordOnChange.bind(this)}
                 />
               </FormControl>
               <Button

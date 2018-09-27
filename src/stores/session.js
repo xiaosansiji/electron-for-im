@@ -11,8 +11,8 @@ import { observable, computed, action } from 'mobx';
   }
 
   @action('Sign in')
-  signIn() {
-    self.userInfo = { name: 'sunzhe' };
+  signIn(data) {
+    self.userInfo = data;
   }
 
   @action('Sign out')
