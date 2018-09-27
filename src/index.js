@@ -7,12 +7,7 @@ import registerServiceWorker from './registerServiceWorker';
 // import mobx from 'mobx';
 import { Provider } from 'mobx-react';
 // Import our Stores Here
-import SessionStore from './stores/session';
-// Because they're classes, we have to instantiate them here :)
-const sessionStore = new SessionStore({});
-const stores = {
-  session: sessionStore,
-};
+import stores from './stores';
 axios.defaults.baseURL = 'https://m.bingbaba.com';
 class App extends Component {
     render() {

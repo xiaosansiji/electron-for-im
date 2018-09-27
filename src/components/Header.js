@@ -35,7 +35,7 @@ class Header extends React.Component {
 
   render() {
     const { anchorEl } = this.state;
-    const { classes } = this.props;
+    const { classes, signOut } = this.props;
     const isMenuOpen = Boolean(anchorEl);
 
     const renderMenu = (
@@ -47,7 +47,7 @@ class Header extends React.Component {
         onClose={this.handleMenuClose}
       >
         <MenuItem onClick={this.handleClose}>账号</MenuItem>
-        <MenuItem onClick={this.handleClose}>退出</MenuItem>
+        <MenuItem onClick={signOut}>退出</MenuItem>
       </Menu>
     );
 

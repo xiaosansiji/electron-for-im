@@ -7,18 +7,28 @@ import TextField from '@material-ui/core/TextField';
 import Header from '../components/Header';
 import Sidebar from '../components/Sidebar';
 
-class Layout extends Component {
+@inject(({ session }) => ({
+  isLogined: session.getLoginStatus,
+  userInfo: session.userInfo,
+  signIn: session.signIn,
+  signOut: session.signOut,
+}))
+@observer
+export default class Layout extends Component {
   render() {
     const {
       isLogined,
+      userInfo,
       signIn,
+      signOut,
     } = this.props;
+    console.log(userInfo);
     if (!isLogined) {
       return (<Login signIn={signIn} />);
     }
     return (
       <div>
-        <Header />
+        <Header signOut={signOut} />
         <div className="content">
           <Grid container spacing={8}>
             <Grid item xs={3}>
@@ -40,8 +50,3 @@ class Layout extends Component {
   }
 }
 
-export default inject(({ session }) => ({
-  isLogined: session.getLoginStatus,
-  userInfo: session.userInfo,
-  signIn: session.signIn,
-}))(observer(Layout));

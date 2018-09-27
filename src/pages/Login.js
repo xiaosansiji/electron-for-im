@@ -1,5 +1,5 @@
 import React from 'react';
-import { observer, inject } from 'mobx-react';
+import { observer } from 'mobx-react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -42,9 +42,6 @@ const styles = theme => ({
     marginTop: theme.spacing.unit * 3,
   },
 });
-@inject(({ session }) => ({
-  signIn: session.signIn,
-}))
 @observer
 class SignIn extends React.Component {
   render() {
